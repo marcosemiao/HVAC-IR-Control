@@ -260,7 +260,6 @@ void IRsend::sendHvacPanasonic(
   switch (HVAC_Mode)
   {
     case HVAC_HOT:   data[5] = (byte) data[5] | B01000000; break;
-    case HVAC_FAN:   data[5] = (byte) data[5] | B01100000; break; //EXISTE PAS SUR CETTE CLIM
     case HVAC_COLD:  data[5] = (byte) data[5] | B00110000; break; 
     case HVAC_DRY:   data[5] = (byte) data[5] | B00100000; break;
     case HVAC_AUTO:  data[5] = (byte) data[5] | B00000000; break;
@@ -294,7 +293,6 @@ void IRsend::sendHvacPanasonic(
   switch (HVAC_VanneMode)
   {
     case VANNE_AUTO:        data[8] = (byte) data[8] | B00001111; break;
-    case VANNE_AUTO_MOVE:   data[8] = (byte) data[8] | B00001111; break; //same as AUTO in the PANASONIC CASE
     case VANNE_H1:          data[8] = (byte) data[8] | B00000001; break;
     case VANNE_H2:          data[8] = (byte) data[8] | B00000010; break;
     case VANNE_H3:          data[8] = (byte) data[8] | B00000011; break;
