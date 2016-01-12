@@ -251,17 +251,17 @@ void IRsend::sendHvacPanasonic(
 
   // Byte 6 - On / Off
   if (HVAC_SWITCH) {
-    data[5] = (byte) 0x08; // Switch HVAC Power
+    data[5] = (byte) 0x09; // Switch HVAC Power
   } else {
-    data[5] = (byte) 0x09; // Do not switch HVAC Power
+    data[5] = (byte) 0x08; // Do not switch HVAC Power
   }
 
   // Byte 6 - Mode
   switch (HVAC_Mode)
   {
     case HVAC_HOT:   data[5] = (byte) data[5] | B01000000; break;
-    case HVAC_FAN:   data[5] = (byte) data[5] | B01100000; break;
-    case HVAC_COLD:  data[5] = (byte) data[5] | B00011000; break;
+    case HVAC_FAN:   data[5] = (byte) data[5] | B01100000; break; //EXISTE PAS SUR CETTE CLIM
+    case HVAC_COLD:  data[5] = (byte) data[5] | B00110000; break; 
     case HVAC_DRY:   data[5] = (byte) data[5] | B00100000; break;
     case HVAC_AUTO:  data[5] = (byte) data[5] | B00000000; break;
     default: break;
@@ -286,7 +286,7 @@ void IRsend::sendHvacPanasonic(
     case FAN_SPEED_2:       data[8] = (byte) B01000000; break;
     case FAN_SPEED_3:       data[8] = (byte) B01010000; break;
     case FAN_SPEED_4:       data[8] = (byte) B01100000; break;
-    case FAN_SPEED_5:       data[8] = (byte) B01010000; break;
+    case FAN_SPEED_5:       data[8] = (byte) B01110000; break;
     case FAN_SPEED_AUTO:    data[8] = (byte) B10100000; break;
     default: break;
   }
@@ -306,9 +306,9 @@ void IRsend::sendHvacPanasonic(
    // Byte 14 - Profile
   switch (HVAC_ProfileMode)
   {
-    case NORMAL:        data[13] = (byte) B00010000; break;
+    case NORMAL:        data[13] = (byte) B00000000; break;
     case QUIET:         data[13] = (byte) B01100000; break;
-    case BOOST:         data[13] = (byte) B00010001; break;
+    case BOOST:         data[13] = (byte) B00000001; break;
     default: break;
   }  
   
